@@ -9,6 +9,13 @@ pub struct Config { // todo look into this public shit
     pub path: String,
 }
 
+pub fn exists() -> bool {
+    let app_data = env::var("APPDATA").unwrap();
+    let app_folder = format!("{}/RubyModManager", app_data);
+    let app_folder_path = Path::new(&app_folder);
+    return app_folder_path.exists();
+}
+
 pub fn save_config(mods_folder_path: &Path) {
     let app_data = env::var("APPDATA").unwrap();
     let app_folder = format!("{}/RubyModManager", app_data);

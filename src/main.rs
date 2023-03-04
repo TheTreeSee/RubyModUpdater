@@ -21,14 +21,19 @@ fn main() {
         process::exit(0);
     }
 
+    if config::exists() {
+        println!("Config file found");
+    } else {
+        println!("Config file not found");
+        config::save_config(&Path::new("."));
+    }
+
     args.remove(0);
 
     let mut need_help = false;
 
-    let mut mods_folder_path = Path::new(".");
-    println!("OG mods_folder_path: {:?}", mods_folder_path); //todo remove this and implement folder logic
     let config_data = config::read_config();
-    mods_folder_path = Path::new(config_data.path.as_str());
+    let mut mods_folder_path = Path::new(config_data.path.as_str());
 
     for (i, arg) in args.iter().enumerate() {
         let match_result = match arg.as_str() {
