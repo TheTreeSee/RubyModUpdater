@@ -41,10 +41,6 @@ fn main() {
                 help::print_help();
                 true
             }
-            "--init" | "-i" => {
-                mod_manager::init_folder(&mods_folder_path);
-                true
-            }
             "--folder" | "-f" => {
                 if let Some(path_arg) = args.get(i + 1) {
                     mods_folder_path = Path::new(path_arg);
@@ -53,6 +49,18 @@ fn main() {
                     println!("Mod folder path: {:?}", config_data.path);
                     println!("Tip: To change folter path, follow this commant with the new path.");
                 }
+                true
+            }
+            "--init" | "-i" => {
+                mod_manager::init_folder(&mods_folder_path);
+                true
+            }
+            "--version" | "-v" => {
+                mod_manager::version();
+                true
+            }
+            "--update" | "-u" => {
+                mod_manager::update();
                 true
             }
             _ => {
@@ -71,4 +79,3 @@ fn main() {
     println!("------------------------------------------");
     println!("");
 }
-

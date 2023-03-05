@@ -4,8 +4,6 @@ use std::path::Path;
 use std::process;
 
 pub fn init_folder(folder_path: &Path) {
-    println!("Mods folder path: {}", folder_path.display());
-
     if folder_path.exists() {
         println!("Mods folder already exists");
         return;
@@ -17,5 +15,13 @@ pub fn init_folder(folder_path: &Path) {
     }
 
     let mut file = File::create(folder_path.join("README.txt")).unwrap();
-    file.write_all(b"This folder contains Minecraft mods.").unwrap();
+    file.write_all(b"Please put all mods you want in this file").unwrap();
+}
+
+pub fn version() { // todo add logic to change minecraft version
+    println!("Useing minecraft version v1.19.3");
+}
+
+pub fn update() { // todo add logic to change minecraft version
+    println!("Running update...");
 }

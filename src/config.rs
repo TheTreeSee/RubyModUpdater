@@ -24,8 +24,8 @@ pub fn save_config(mods_folder_path: &Path) {
     let mods_folder_path = mods_folder_path.to_str().unwrap();
 
     let config = Config {
-        name: String::from("My App"),
-        version: String::from("1.0"),
+        name: String::from("RubyModManager"),
+        version: String::from("0.1"),
         path: String::from(mods_folder_path),
     };
 
